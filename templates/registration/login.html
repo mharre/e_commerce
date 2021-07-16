@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files  %}
+<link rel="stylesheet" href="{% static 'login-out.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+
+<section id="form-test">
+<div class="container w-25 pt-3">
+  <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div class="form-group">
+          {{ form.username.label_tag }}
+          {{ form.username }}
+          {{ form.password.label_tag }}
+          {{ form.password }}
+          {{ form.non_field_errors }}
+      </div>
+      <input class='btn btn-outline-primary' type="submit" value="Login" />
+      <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+  
+  {# Assumes setup the password_reset view in URLconf #}
+  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+body {
+    background: #fef8f5;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.card {
+    border: 4px solid #eb5d1e;
+    margin: 1rem;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover,
+.card:active {
+    transform: scale(1.05);
+    box-shadow: 1px 1px 100px rgba(0, 0, 0, 0.4);
+}
+    

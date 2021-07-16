@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<section id="sign-up">
+<div class="container w-25">
+    <h1 class='text-center mt-3'>Sign Up</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group {% if field.errors %}invalid{% endif %}">
+        {{ field.label_tag }}
+        {{ field }}
+        {{ field.help_text }}
+        {{ field.errors }}
+        </div>
+        {% endfor %}
+        <button type="submit" class='btn btn-primary'>Create Account</button>
+    </form>
+</div>
+</section>
+
+{% endblock %}

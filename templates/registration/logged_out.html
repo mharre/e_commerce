@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'login-out.css '%}">
+{% endblock %}
+
+{% block content %}
+<section id='logged-out'>
+  <div class="container text-center mt-3">
+    <h3> Logged Out </h3>
+    <a href="{% url 'login'%}">Click here to login again.</a>
+  </div>
+</section>
+{% endblock %}

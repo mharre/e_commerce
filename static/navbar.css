@@ -1,0 +1,17 @@
+.nav-item a {
+    color: #4e4039
+}
+
+.errorlist li {
+    color: #ad0000
+}
+
+.invalid label {
+    color: #d6000b;
+}
+  
+.invalid input,
+.invalid textarea {
+    border-color: #d6000b;
+    background-color: #ffe6e7;
+}
