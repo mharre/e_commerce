@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
 
-from .forms import SignUpForm, CheckoutForm, CouponForm, RefundForm
+from .forms import SignUpForm, CheckoutForm, CouponForm, RefundForm, ReviewForm
 
 from .models import Product, ShoppingCartOrder, ShoppingCartOrderItem, Address, Payment, Coupon, Refund, Review
 
@@ -53,8 +53,8 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # pk = self.kwargs.get('pk')
-        reviews = Review.objects.all()
+        product = context['object']
+        reviews = Review.objects.filter(product=product)
         context['reviews'] = reviews
         return context
 
@@ -328,6 +328,39 @@ class PaymentView(View):
             # Something else happened, completely unrelated to Stripe #send email to ourselves, means somethign went wrong w/ code
             messages.warning(self.request, 'Serious error has occured, we have been notifed of this issue')
             return redirect('/')
+
+
+class MyOrdersView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        try:
+            order = ShoppingCartOrder.objects.filter(user=self.request.user, ordered=True)
+            form = ReviewForm(user=self.request.user)
+            context = {
+                'object': order,
+                'form': form
+            }
+            return render(request, 'my_site/my_orders.html', context)
+        except ObjectDoesNotExist:
+            messages.warning(request, 'You do not have any orders')
+            return redirect('all_products')
+
+    def post (self, request, *args, **kwargs):
+        form = ReviewForm(request.POST, user=self.request.user)
+        if form.is_valid():
+            test = form.save(commit=False)
+            test.user = request.user
+            test.save()
+            return redirect('starting_page')
+        else:
+            order = ShoppingCartOrder.objects.filter(user=self.request.user, ordered=True)
+            form = ReviewForm(request.POST, user=self.request.user)
+            context = {
+                'object': order,
+                'form': form
+            }
+            return render(request, 'my_site/my_orders.html', context)
+
+
 
 
 class RequestRefundView(View):

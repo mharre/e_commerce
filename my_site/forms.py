@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 
+from .models import Review, ShoppingCartOrderItem, Product
 
 PAYMENT_CHOICES = (
     ('S', 'Stripe'),
@@ -119,6 +120,38 @@ class RefundForm(forms.Form):
     }))
     
 
+class ReviewForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(ReviewForm, self).__init__(*args, **kwargs)
+        ordered_product_ids = ShoppingCartOrderItem.objects.filter(user=user).values_list('item_id', flat=True)
+
+        self.fields['product'].queryset = Product.objects.filter(id__in=ordered_product_ids)
+
+    class Meta:
+        model = Review
+        exclude = ['user', 'date']
+        widgets = {
+            'product': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'rating': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'placeholder': '5.0..'
+            }),
+            'comment': forms.Textarea(attrs={
+                'class': 'form-control'
+            })
+        }
+        error_messages = {
+            'rating': {
+                'max_digits': 'Please ensure that the rating is a decimal number and only 2 digits long',
+                'max_whole_digits': 'Please ensure that the rating is a decimal number with only 1 digit before the decimal point'
+            },
+            'comment': {
+                'min_length': 'Please ensure your comment has at least %(limit_value)d characters (it has %(show_value)d)'
+            }
+        }
     
 
         

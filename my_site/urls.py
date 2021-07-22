@@ -15,5 +15,6 @@ urlpatterns = [
     path('remove-item-from-cart/<slug>/', views.remove_single_item_from_cart, name='remove_single_item_from_cart'),
     path('checkout/', views.CheckOutView.as_view(), name='checkout'),
     path('payment/<payment_option>/', views.PaymentView.as_view(), name='payment'),
-    path('request-refund/', views.RequestRefundView.as_view(), name='request_refund')
+    path('request-refund/', views.RequestRefundView.as_view(), name='request_refund'),
+    path('my-orders/', views.MyOrdersView.as_view(), name='my_orders')
 ]

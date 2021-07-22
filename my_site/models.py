@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 from django.conf import settings
 from django.shortcuts import reverse
 from django_countries.fields import CountryField
+
+from decimal import *
 
 
 ADDRESS_CHOICES = (
@@ -154,9 +156,10 @@ class ShoppingCartOrder(models.Model):
 
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    rating = models.DecimalField(max_digits=2, decimal_places=1)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    rating = models.DecimalField(max_digits=2, decimal_places=1, validators=[MinValueValidator(Decimal('0.1')), MaxValueValidator(Decimal('5.0'))])
     comment = models.TextField(validators=[MinLengthValidator(10)])
-    product = models.OneToOneField(Product, on_delete=models.SET_NULL, null=True)
+    date = models.DateField(auto_now=True)
 
     def __str__(self):
         return str(self.user) 
