@@ -24,18 +24,21 @@
                 <h6><strong>{{ order_item.item.name }}</strong></h6>
             </div>
             <div class="card-body flex-column text-center">
-                <button class="btn btn-primary btn-sm">Leave a review?</button>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Ordered On: {{ order.ordered_date }}</li>
+                    <li class="list-group-item">Price: ${{ order_item.item.price }}</li>
+                  </ul>
             </div>
             </div>
         </div>
         {% endfor %}
         {% endfor %}
-
+        <button class="btn btn-primary btn-sm" id='review'>Leave a review?</button>
     </div>
 
     <div class="container w-25 mb-5">
         <div class="container-fluid" id="wrapper">
-            <form method="POST">
+            <form method="POST" id='form1'>
                 {% csrf_token %}
                 {% for field in form %}
                 <div class="form-group px-3 my-3 {% if field.errors %}invalid{% endif %}">
@@ -52,4 +55,14 @@
     
 
 </div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script type='text/javascript'>
+$( document ).ready( function() {
+    $( "#review" ).click( function() {
+        $( "#form1" ).toggle("slow");
+    });
+});
+</script>
 {% endblock %}

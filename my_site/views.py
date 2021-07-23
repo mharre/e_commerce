@@ -347,9 +347,9 @@ class MyOrdersView(LoginRequiredMixin, View):
     def post (self, request, *args, **kwargs):
         form = ReviewForm(request.POST, user=self.request.user)
         if form.is_valid():
-            test = form.save(commit=False)
-            test.user = request.user
-            test.save()
+            form = form.save(commit=False)
+            form.user = request.user
+            form.save()
             return redirect('starting_page')
         else:
             order = ShoppingCartOrder.objects.filter(user=self.request.user, ordered=True)
