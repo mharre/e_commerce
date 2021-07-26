@@ -12,23 +12,61 @@
 {% block content %}
 <section id='product_list'>
 <div id='wrapper'> 
-  <div class="container-fluid w-75">
-    <div class='row p-3'>
-      <div class="card-deck">
-      {% for product in products %}
-          <div class="col-sm-4 mb-4">
-              <div class="card h-100">
-                  <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                  <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">{{ product.name|title }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">${{ product.price }}</h6>
-                  <p class="card-text">{{ product.history }}</p>
-                  <a href="{{ product.get_absolute_url }}" class="btn btn-primary mt-auto">Go somewhere</a>
-                  </div>
-              </div>
-          </div>
-      {% endfor %}
-      </div>
+    <div class="container-fluid w-75">
+        <div class='row p-3'>
+            <div class="container mt-3">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3 shadow rounded">
+
+                    <span class="navbar-brand">Categories:</span>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                        <a class="nav-link" href="#">All
+                            <span class="sr-only">(current)</span>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Shirts</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Sport wears</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Outwears</a>
+                        </li>
+            
+                    </ul>
+
+                    <form class="form-inline" action="/search/" method="GET">
+                        <div class="md-form my-0">
+                        <input class="form-control mr-sm-2" type="search" name='q' placeholder="Search.." aria-label="Search" required>
+                        </div>
+                    </form>
+                    </div>
+            </div>
+        </div>
+        <div class="card-deck">
+        {% for product in products %}
+            <div class="col-sm-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ product.name|title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${{ product.price }}</h6>
+                    <p class="card-text">{{ product.history }}</p>
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-primary mt-auto">More Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
     </div>
     
     <div class="pagination justify-content-center">

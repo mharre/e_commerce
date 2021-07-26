@@ -154,7 +154,8 @@ class ReviewForm(forms.ModelForm):
         }
     
 
-        
+class ProductSearchForm(forms.Form):
+    q = forms.CharField()      
 
         
     

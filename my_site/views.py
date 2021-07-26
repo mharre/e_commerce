@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
 
-from .forms import SignUpForm, CheckoutForm, CouponForm, RefundForm, ReviewForm
+from .forms import SignUpForm, CheckoutForm, CouponForm, RefundForm, ReviewForm, ProductSearchForm
 
 from .models import Product, ShoppingCartOrder, ShoppingCartOrderItem, Address, Payment, Coupon, Refund, Review
 
@@ -551,3 +551,21 @@ class AddCouponView(View):
                 except ObjectDoesNotExist:
                     messages.info(request,'You do not have an active order')
                     return redirect('checkout')
+
+
+def product_search(request):
+    form = ProductSearchForm()
+    q = ''
+    results = []
+
+    if 'q' in request.GET:
+        form = ProductSearchForm(request.GET)
+        if form.is_valid():
+            q = form.cleaned_data['q']
+            results = Product.objects.filter(name__icontains=q)
+
+    return render(request, 'my_site/search.html',{
+        # 'form': form,
+        'q': q,
+        'results': results
+        })
