@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
@@ -59,16 +59,6 @@ class SignUpForm(UserCreationForm):
             )
         }
 
-class MyAuthenticationForm(AuthenticationForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.fields['username'].widget = forms.widgets.TextInput(attrs={
-                'class': 'form-control'
-            })
-        self.fields['password'].widget = forms.widgets.PasswordInput(attrs={
-                'class': 'form-control'
-            }) 
 
 class CheckoutForm(forms.Form):
     shipping_address = forms.CharField(required=False)

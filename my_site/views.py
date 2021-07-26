@@ -7,7 +7,6 @@ from django.views.generic import ListView, DetailView, View
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
@@ -57,16 +56,7 @@ class ProductDetailView(DetailView):
         reviews = Review.objects.filter(product=product)
         context['reviews'] = reviews
         return context
-
-
-class MyLoginView(LoginView):
-    template_name = 'registration/login.html'
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        messages.success(self.request, f'Welcome {self.request.user}')
-        return response
-        
+     
     
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
@@ -398,22 +388,6 @@ class RequestRefundView(View):
                 messages.info(request, 'This order does not exist')
                 return redirect('request_refund')
 
-def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return HttpResponseRedirect(reverse('starting_page'))
-    else:
-        form = SignUpForm()
-    return render(request, 'my_site/sign_up.html', {
-        'form': form
-    })
-    
 
 @login_required
 def add_to_cart(request, slug):

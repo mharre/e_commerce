@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -149,3 +150,5 @@ STRIPE_PUBLIC_KEY = 'pk_test_51JAyEpFoScc12fVdLxCGCfMpP1WQXKnWo06i353TInqa4D2PQv
 
 STRIPE_SECRET_KEY = 'sk_test_51JAyEpFoScc12fVdw27XskdCYgJClErVA29vBUVvb7PxLVNiCjdbgk8gpo1bNA7M4Zqk5hlVHRhtRCh9XeQHKWh900kLGPnkur'
 
+# Email Backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

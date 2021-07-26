@@ -15,7 +15,7 @@
           <ul class="navbar-nav ml-auto">
             {% if not user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'sign_up' %}">Sign Up</a>
+              <a class="nav-link" href="{% url 'accounts:sign_up' %}">Sign Up</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">Login</a>
@@ -30,10 +30,12 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Profile
+                Profile<small>({{request.user}})</small>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'my_orders' %}">My Orders</a>
+                <a class="dropdown-item" href="{% url 'accounts:edit' %}">Edit Profile</a>
+                <a class="dropdown-item" href="{% url 'accounts:password_change' %}">Change Password</a>
               </div>
             </li>
             <li class="nav-item">
