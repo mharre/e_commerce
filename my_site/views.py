@@ -7,6 +7,7 @@ from django.views.generic import ListView, DetailView, View
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
@@ -536,7 +537,19 @@ def product_search(request):
         form = ProductSearchForm(request.GET)
         if form.is_valid():
             q = form.cleaned_data['q']
-            results = Product.objects.filter(name__icontains=q)
+            ##############postgres single search term
+            # results = Product.objects.filter(name__search=q)
+            ###############searching multiple fields
+            # results = Product.objects.annotate(search=SearchVector('name', 'artist')).filter(search=q)
+            ################improvement of above, words are passed through stemming algo, searching logical terms etc
+            # results = Product.objects.annotate(search=SearchVector('name', 'artist')).filter(search=SearchQuery(q))
+            ################rankings
+            vector = SearchVector('name', weight='A') + \
+                SearchVector('artist', weight='B')
+            query = SearchQuery(q)
+            results = Product.objects.annotate(rank=SearchRank(vector, query, cover_density=True)).order_by('-rank')
+
+            results = Product.objects.annotate(search=SearchVector('name', 'artist')).filter(search=SearchQuery(q))
 
     return render(request, 'my_site/search.html',{
         # 'form': form,

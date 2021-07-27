@@ -3,7 +3,7 @@
     height: 100vh;
 }
 
-.container a {
+a {
     text-decoration: none !important;
 }
 
@@ -11,3 +11,8 @@
     background: #fef8f5;
     height: 100vh;
 }
+
+.form-control:focus {
+    border-color: #d66534;
+    box-shadow: 0 0 0 0.2rem rgb(230, 77, 11, 0.25);
+} 
