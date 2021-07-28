@@ -7,33 +7,38 @@
 
 {% block content %}
 <div class="container-fluid" id='loginout'>
-{% if next %}
-  {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-  {% else %}
-    <p>Please login to see this page.</p>
+  <div class="container-fluid text-center pt-3">
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p><strong> Please login to see this page.</strong></p>
+    {% endif %}
   {% endif %}
-{% endif %}
-
-<section id="form-test">
-<div class="container w-25 pt-3">
-  <form method="post" action="{% url 'login' %}">
-      {% csrf_token %}
-      <div class="form-group">
-          {{ form.username.label_tag }}
-          {{ form.username }}
-          {{ form.password.label_tag }}
-          {{ form.password }}
-          {{ form.non_field_errors }}
-      </div>
-      <input class='btn btn-outline-primary' type="submit" value="Login" />
-      <input type="hidden" name="next" value="{{ next }}" />
-  </form>
-  
-  {# Assumes setup the password_reset view in URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-</div>
-</section>
+    </div>
+    
+  <section id="form-test">
+  <div class="parent1 container h-100 d-flex justify-content-center align-items-center" id='login'> 
+    <div class="container w-50 py-3" id='login-wrapper'>
+      <h1 class='text-center'>Login</h1>
+      <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <div class="form-group">
+              {{ form.username.label_tag }}
+              {{ form.username }}
+              {{ form.password.label_tag }}
+              {{ form.password }}
+              {{ form.non_field_errors }}
+          </div>
+          <input id='login-input' class='btn btn-outline-primary' type="submit" value="Login" />
+          <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+      
+      
+      <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    </div>
+  </div>
+  </section>
 </div>
 {% endblock %}

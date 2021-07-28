@@ -15,7 +15,7 @@
     <div class="container-fluid w-75">
         <div class='row p-3'>
             <div class="container mt-3">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3 shadow rounded">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3 shadow rounded" id='nav1'>
 
                     <span class="navbar-brand">Categories:</span>
 
@@ -61,7 +61,7 @@
                     <h5 class="card-title">{{ product.name|title }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${{ product.price }}</h6>
                     <p class="card-text">{{ product.history }}</p>
-                    <a href="{{ product.get_absolute_url }}" class="btn btn-primary mt-auto">More Details</a>
+                    <a href="{{ product.get_absolute_url }}" class="btn mt-auto" id='btn'>More Details</a>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
     </div>
     
     <div class="pagination justify-content-center pt-3">
-      <nav area-label='testing stuff'>
+      <nav aria-label='testing stuff'>
           <ul class="pagination step-links">
               {% if page_obj.has_previous %}
               <li class="page-item">
@@ -112,7 +112,7 @@
     </div>
 
   </div>
-/<div>
+</div>
 
 </section>
 {% endblock %}

@@ -1,10 +1,9 @@
 #loginout {
     background: #fef8f5;
-    height: 100vh;
 }
 
-a {
-    text-decoration: none !important;
+#logout a {
+    color:peru;
 }
 
 #wrapper {
@@ -16,3 +15,66 @@ a {
     border-color: #d66534;
     box-shadow: 0 0 0 0.2rem rgb(230, 77, 11, 0.25);
 } 
+
+#login-wrapper {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.parent {
+    min-height: 85vh;
+}
+
+.parent h1 {
+    color: #7e5e60;
+}
+
+.parent h3 {
+    color: #7e5e60
+}
+
+#signup-button {
+    background-color: #d66534;
+    color:#fef8f5;
+}
+
+#signup-button:hover,
+#signup-button:active {
+    background-color: #ff986c;
+    border-color: #ff986c;
+}
+
+#signup-button:focus,
+#signup-button:active {
+    outline:#fef8f5;
+    box-shadow: 0 0 0 0.2rem rgb(230, 77, 11, 0.25);
+}
+
+#logout a:focus,
+#logout a:active {
+    outline:#fef8f5;
+    box-shadow: 0 0 0 0.2rem rgb(230, 77, 11, 0.25);
+}
+
+#login a {
+    color: #6c757d;
+}
+
+#login-input {
+    border-color: #ff986c;
+    color: #ff986c;
+}
+
+#login-input:hover,
+#login-input:active {
+    background-color: #ff986c;
+    border-color: #ff986c;
+    color: white;
+}
+
+#login-input:focus,
+#login-input:active {
+    outline:#fef8f5;
+    box-shadow: 0 0 0 0.2rem rgb(230, 77, 11, 0.25);
+}

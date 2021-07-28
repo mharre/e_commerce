@@ -100,7 +100,14 @@
     color: #4e4039;
 }
 
+.btn:focus, .btn:active {
+    outline:#fef8f5;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
 
+.display-3 {
+    color: #7e5e60
+}
 
 
 

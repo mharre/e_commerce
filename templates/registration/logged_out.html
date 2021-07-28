@@ -8,9 +8,9 @@
 {% block content %}
 <div class="container-fluid" id='loginout'>
 <section id='logged-out'>
-  <div class="container text-center pt-3">
+  <div class="parent container h-100 d-flex flex-column justify-content-center align-items-center" id='logout'>
     <h3> Logged Out </h3>
-    <a href="{% url 'login'%}">Click here to login again.</a>
+    <a class='btn' href="{% url 'login'%}">Click here to login again</a>
   </div>
 </section>
 </div>
