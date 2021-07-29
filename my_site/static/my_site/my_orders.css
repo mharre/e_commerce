@@ -25,3 +25,43 @@
 #form1 {
     display : none;
 }
+
+#myorders-wrapper {
+    background-color: #fef8f5;
+}
+
+#review-submit {
+    background-color: #d66534;
+    color:#fef8f5;
+    outline: none;
+}
+
+#review-submit:hover,
+#review-submit:active {
+    background-color: #ff986c;
+    border-color: #ff986c;
+}
+
+#review-submit:focus,
+#review-submit:active {
+    outline:#fef8f5;
+    box-shadow: 0 0 0 0.2rem rgb(230, 77, 11, 0.25);
+}
+
+#review {
+    border-color: #ff986c;
+    color: #ff986c;
+}
+
+#review:hover,
+#review:active {
+    background-color: #ff986c;
+    border-color: #ff986c;
+    color: white;
+}
+
+#review:focus,
+#review:active {
+    outline:#fef8f5;
+    box-shadow: 0 0 0 0.2rem rgb(230, 77, 11, 0.25);
+}

@@ -1,3 +1,24 @@
 ul {
     list-style: none;
 }
+
+#checkout-wrapper {
+    background-color:  #fef8f3;
+}
+
+#continue-btn {
+    background-color: #0096FF;
+    color:#fef8f5;
+}
+
+#continue-btn:hover,
+#continue-btn:active {
+    background-color: #0060a5;
+    border-color: #0060a5;
+}
+
+#continue-btn:focus,
+#continue-btn:active {
+    outline:#fef8f5;
+    box-shadow: 0 0 0 0.2rem rgba(0, 81, 255, 0.25);
+}

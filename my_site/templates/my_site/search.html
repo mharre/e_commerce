@@ -6,8 +6,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="container-fluid w-75 text-center">
+<div class="container-fluid" id='search-wrapper'>
+    <div class="container text-center pt-3">
     {% if q %}
         <h1>Products containing "{{ q }}"</h1>
         <p>
@@ -16,7 +16,7 @@
             {% endwith %}
         </p>
     </div>
-    <div class="container-fluid w-75">
+    <div class="container parent1 h-100 d-flex justify-content-center align-items-center">
         <div class="card-deck">
             {% for product in results %}
                 <div class="col-sm-4 mb-4">
@@ -26,24 +26,15 @@
                         <h5 class="card-title">{{ product.name|title }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">${{ product.price }}</h6>
                         <p class="card-text">{{ product.history }}</p>
-                        <a href="{{ product.get_absolute_url }}" class="btn btn-primary mt-auto">More Details</a>
+                        <a href="{{ product.get_absolute_url }}" class="btn mt-auto">More Details</a>
                         </div>
                     </div>
                 </div>
                 {% empty %}
-                <p>There are no results for your search</p>
+                <h1>We're sorry, there are no results for your search</h1>
             {% endfor %}
         </div>
     </div>
-    <!-- <p>
-        <a href="{% url 'product_search' %}" class='btn btn-danger mt-5' role="button" aria-disabled="true">New Search?</a>
-    </p> -->
-    {% else %}
-
-    <!-- <form method="GET">
-        {{ form }}
-        <input type='submit' class="btn btn-primary my-1" value="Search">
-    </form> -->
+    {% endif %}
 </div>
-{% endif %}
 {% endblock %}

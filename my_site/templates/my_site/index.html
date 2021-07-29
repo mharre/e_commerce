@@ -18,7 +18,7 @@ test
                 <h2>We are testing even more stuff</h2>
             </div>
             <div class="col-lg-6 order-1 order-2">
-                <img src="{% static 'my_site/images/hero-img.svg' %}" alt="">
+
             </div>
         </div>
     </div>
@@ -84,7 +84,7 @@ test
           <div class="carousel-caption d-none d-md-block">
             <h5>{{product.name|title}}</h5>
             <p>Artist: {{product.artist}}</p>
-            <a class="btn text-white" href="{% url 'all_products' %}" role="button">Full Collection</a>
+            <a class="btn text-white" href="{% url 'all_products' genre='all' %}" role="button">Full Collection</a>
           </div>
         </div>
         {% endif %}

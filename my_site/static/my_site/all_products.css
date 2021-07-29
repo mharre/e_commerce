@@ -47,3 +47,11 @@
     border-color: #d66534;
     box-shadow: 0 0 0 0.2rem rgb(230, 77, 11, 0.25);
 } 
+
+#search-wrapper {
+    background-color: #fef8f5;
+}
+
+#search-wrapper h1 {
+    color: #4e4039;
+}

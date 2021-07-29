@@ -103,3 +103,29 @@ html, body {
     color: #fff;
     background-color: #7e5e60;
 }
+
+#order-summary-wrapper {
+    background-color: #fef8f3;
+}
+
+#add-sub-btn {
+    color: #0096FF;
+}
+
+#continue-shopping-btn {
+    background-color: #0096FF;
+    color: white;
+}
+
+#continue-shopping-btn:hover,
+#continue-shopping-btn:active {
+    background-color: #0060a5;
+}
+
+#cart-badge {
+    background-color: #7e5e60;
+}
+
+#test3 {
+    background-color: #fef8f3;;
+}

@@ -2,7 +2,7 @@
 
     <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Your cart</span>
-        <span class="badge badge-secondary badge-pill">{{ order.items.count }}</span>
+        <span class="badge badge-secondary badge-pill" id='cart-badge'>{{ order.items.count }}</span>
     </h4>
 
     <ul class="list-group mb-3 z-depth-1 shadow bg-white rounded">
@@ -37,7 +37,7 @@
         <div class="input-group shadow bg-white rounded">
           {{ couponform.code }}
           <div class="input-group-append">
-            <button class="btn btn-secondary btn-md waves-effect m-0" type="submit">Redeem</button>
+            <button class="btn btn-md m-0" id='continue-btn' type="submit">Redeem</button>
           </div>
         </div>
     </form>
