@@ -65,3 +65,13 @@
     outline:#fef8f5;
     box-shadow: 0 0 0 0.2rem rgb(230, 77, 11, 0.25);
 }
+
+#no-orders a {
+    color: #7e5e60;
+}
+
+#refund-button:focus,
+#refund-button:active {
+    outline:#fef8f5;
+    box-shadow: 0 0 0 0.2rem rgb(230, 77, 11, 0.25);
+}

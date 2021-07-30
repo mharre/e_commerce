@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-
-    <h2>Request Refund</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit" class='btn btn-primary btn-block mt-3'>Submit</button>
-    </form>
-
+<div class="container-fluid" id='refund-wrapper'>
+    <div class="container parent1 h-100 d-flex justify-content-center align-items-center"> 
+        <div class="container w-50 py-3" id='refund-form-wrapper'>
+            <h2 class='text-center'>Request Refund</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class='btn btn-primary btn-block mt-3' id='refund-submit-btn'>Submit</button>
+            </form>
+        </div>
+    </div>
 
 </div>
 {% endblock %}
