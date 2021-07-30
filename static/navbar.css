@@ -127,5 +127,32 @@ html, body {
 }
 
 #test3 {
-    background-color: #fef8f3;;
+    background-color: #fef8f3;
+}
+
+#refund-wrapper {
+    background-color: #fef8f3;
+}
+
+#refund-form-wrapper {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+#refund-submit-btn {
+    background-color: #0096FF;
+    color:#fef8f5;
+}
+
+#refund-submit-btn:hover,
+#refund-submit-btn:active {
+    background-color: #0060a5;
+    border-color: #0060a5;
+}
+
+#refund-submit-btn:focus,
+#refund-submit-btn:active {
+    outline:#fef8f5;
+    box-shadow: 0 0 0 0.2rem rgba(0, 81, 255, 0.25);
 }

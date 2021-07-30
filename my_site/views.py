@@ -43,7 +43,14 @@ class AllProductView(ListView):
     model = Product
     ordering=['id']
     paginate_by = 9
-    context_object_name = 'products'
+    context_object_name = 'all_products'
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super().get_queryset(*args, **kwargs)
+        fltr = self.kwargs['style']
+        if fltr != 'all':
+            qs = qs.filter(style=self.kwargs['style'])
+        return qs
 
 
 class ProductDetailView(DetailView):

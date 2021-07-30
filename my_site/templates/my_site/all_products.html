@@ -28,17 +28,17 @@
 
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                        <a class="nav-link" href="#">All
+                        <a class="nav-link" href="{% url 'all_products' style='all' %}">All
                         </a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Realism</a>
+                        <a class="nav-link" href="{% url 'all_products' style='Realism' %}">Realism</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Portrait</a>
+                        <a class="nav-link" href="{% url 'all_products' style='Portrait' %}">Portrait</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Unknown</a>
+                        <a class="nav-link" href="{% url 'all_products' style='Unknown' %}">Unknown</a>
                         </li>
             
                     </ul>
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="card-deck">
-        {% for product in products %}
+        {% for product in all_products %}
             <div class="col-sm-4 mb-4">
                 <div class="card h-100">
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">

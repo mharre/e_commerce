@@ -13,7 +13,7 @@
         <h1 class="display-4">Your Orders</h1>
         </div>
     </div>
-
+    {% if object %}
     <div class="row justify-content-center">
         {% for order in object %}
         {% for order_item in order.items.all %}
@@ -27,6 +27,8 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Ordered On: {{ order.ordered_date }}</li>
                     <li class="list-group-item">Price: ${{ order_item.item.price }}</li>
+                    <li class="list-group-item">Reference Code: {{ order.ref_code }}</li>
+                    <li class="list-group-item">Request Refund: <a href="{% url 'request_refund' %}" class='btn' id='refund-button'><i class="fas fa-random"></i></a></li>
                   </ul>
             </div>
             </div>
@@ -54,8 +56,12 @@
             </form>
         </div>
     </div>
-    
-
+    {% else %}
+    <div class="container parent1 text-center" id='no-orders'>
+        <h1>You don't have any orders</h1>
+        <h3>Click <a href="{% url 'all_products' style='all' %}">here</a> to view our products!</h3>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
 
