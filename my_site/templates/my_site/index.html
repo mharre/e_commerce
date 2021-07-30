@@ -75,7 +75,7 @@ test
           <div class="carousel-caption d-none d-md-block">
             <h5>{{product.name|title}}</h5>
             <p>Artist: {{product.artist}}</p>
-            <a class="btn text-white" href="{% url 'all_products' %}" role="button">Full Collection</a>
+            <a class="btn text-white" href="{% url 'all_products' style='all' %}" role="button">Full Collection</a>
           </div>
         </div>
         {% else %}
@@ -84,7 +84,7 @@ test
           <div class="carousel-caption d-none d-md-block">
             <h5>{{product.name|title}}</h5>
             <p>Artist: {{product.artist}}</p>
-            <a class="btn text-white" href="{% url 'all_products' genre='all' %}" role="button">Full Collection</a>
+            <a class="btn text-white" href="{% url 'all_products' style='all' %}" role="button">Full Collection</a>
           </div>
         </div>
         {% endif %}
