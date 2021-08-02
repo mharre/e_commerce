@@ -76,7 +76,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
             return render(request, 'my_site/order_summary.html', context)
         except ObjectDoesNotExist:
             messages.warning(request,'You do not have an active order')
-            return redirect('all_products')
+            return redirect('all_products', style='all')
 
 
 def is_valid_form(values):
@@ -340,7 +340,7 @@ class MyOrdersView(LoginRequiredMixin, View):
             return render(request, 'my_site/my_orders.html', context)
         except ObjectDoesNotExist:
             messages.warning(request, 'You do not have any orders')
-            return redirect('all_products')
+            return redirect('all_products', style='all')
 
     def post (self, request, *args, **kwargs):
         form = ReviewForm(request.POST, user=self.request.user)
