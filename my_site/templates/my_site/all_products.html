@@ -17,7 +17,7 @@
             <div class="container mt-3">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3 shadow rounded" id='nav1'>
 
-                    <span class="navbar-brand">Styles:</span>
+                    <span class="navbar-brand">School of:</span>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
                     aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,19 +27,22 @@
                     <div class="collapse navbar-collapse" id="basicExampleNav">
 
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'all_products' style='all' %}">All
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_products' school='all' %}">All
                         </a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="{% url 'all_products' style='Realism' %}">Realism</a>
+                        <a class="nav-link" href="{% url 'all_products' school='France' %}">France</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="{% url 'all_products' style='Portrait' %}">Portrait</a>
+                        <a class="nav-link" href="{% url 'all_products' school='Italy' %}">Italy</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="{% url 'all_products' style='Unknown' %}">Unknown</a>
+                        <a class="nav-link" href="{% url 'all_products' school='Russia' %}">Russia</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'all_products' school='Netherlands' %}">Netherlands</a>
+                            </li>
             
                     </ul>
 
@@ -69,43 +72,29 @@
     </div>
     
     <div class="pagination justify-content-center pt-3">
-      <nav aria-label='testing stuff'>
+      <nav aria-label='pagination'>
           <ul class="pagination step-links">
-              {% if page_obj.has_previous %}
-              <li class="page-item">
-                  <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label='Previous'>
-                      <span aria-hidden='true'>&laquo;</span>
-                  </a>
-              </li>
-              <li class="current page-item">
-                  <a class='page-link'>
-                  {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                  </a>
-              </li>
-              <li class="page-item">
-                  <a class="page-link" href="?page=1" aria-label='Next'>
-                      <span aria-hidden='true'>&raquo;</span>
-                  </a>
-              </li>
-              {% endif %}
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label='Previous'>
+                        <span aria-hidden='true'>&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
 
-              {% if page_obj.has_next %}
-              <li class="page-item">
-                  <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label='Previous'>
-                      <span aria-label='true'> &laquo; </span>
-                  </a>
-              </li>
-              <li class="current page-item">
-                  <a class='page-link'>
-                  {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                  </a>
-              </li>
-              <li class="page-item">
-                  <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label='Next'>
-                      <span aria-hidden='true'> &raquo; </span>
-                  </a>
-              </li>
-              {% endif %}
+            <li class="page-item">
+                <a class='page-link'>
+                {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </a>
+            </li>
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label='Next'>
+                        <span aria-hidden='true'> &raquo; </span>
+                    </a>
+                </li>
+            {% endif %}
             </ul>
       </nav>
     </div>

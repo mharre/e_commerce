@@ -47,9 +47,9 @@ class AllProductView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         qs = super().get_queryset(*args, **kwargs)
-        fltr = self.kwargs['style']
+        fltr = self.kwargs['school']
         if fltr != 'all':
-            qs = qs.filter(style=self.kwargs['style'])
+            qs = qs.filter(school=self.kwargs['school'])
         return qs
 
 
@@ -76,7 +76,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
             return render(request, 'my_site/order_summary.html', context)
         except ObjectDoesNotExist:
             messages.warning(request,'You do not have an active order')
-            return redirect('all_products', style='all')
+            return redirect('all_products', school='all')
 
 
 def is_valid_form(values):
@@ -340,7 +340,7 @@ class MyOrdersView(LoginRequiredMixin, View):
             return render(request, 'my_site/my_orders.html', context)
         except ObjectDoesNotExist:
             messages.warning(request, 'You do not have any orders')
-            return redirect('all_products', style='all')
+            return redirect('all_products', school='all')
 
     def post (self, request, *args, **kwargs):
         form = ReviewForm(request.POST, user=self.request.user)

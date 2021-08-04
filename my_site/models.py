@@ -29,7 +29,7 @@ class Product(models.Model):
     history = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=9, decimal_places=2)
     discount_price = models.FloatField(blank=True, null=True)
-    style = models.CharField(max_length=50)
+    school = models.CharField(max_length=50)
     artist = models.ForeignKey(Artist, on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='images', null=True)
     slug = models.SlugField()

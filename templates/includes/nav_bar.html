@@ -15,6 +15,9 @@
           <ul class="navbar-nav ml-auto">
             {% if not user.is_authenticated %}
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'all_products' school='all' %}">Browse</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'accounts:sign_up' %}">Sign Up</a>
             </li>
             <li class="nav-item">
