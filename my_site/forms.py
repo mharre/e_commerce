@@ -127,7 +127,7 @@ class ReviewForm(forms.ModelForm):
             }),
             'rating': forms.NumberInput(attrs={
                 'class': 'form-control',
-                'placeholder': '5.0..'
+                'placeholder': '5.0....'
             }),
             'comment': forms.Textarea(attrs={
                 'class': 'form-control'
