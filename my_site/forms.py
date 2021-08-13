@@ -114,7 +114,7 @@ class ReviewForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         super(ReviewForm, self).__init__(*args, **kwargs)
-        ordered_product_ids = ShoppingCartOrderItem.objects.filter(user=user).values_list('item_id', flat=True)
+        ordered_product_ids = ShoppingCartOrderItem.objects.filter(user=user, ordered=True).values_list('item_id', flat=True)
 
         self.fields['product'].queryset = Product.objects.filter(id__in=ordered_product_ids)
 
