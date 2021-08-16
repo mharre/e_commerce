@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from os import getenv
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = getenv('DJANGO_SKEY')
+SECRET_KEY = env('DJANGO_SKEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = getenv('IS_DEVELOPMENT', True)
@@ -87,8 +91,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres', 
-        'USER': getenv('DB_USERNAME'), 
-        'PASSWORD': getenv('DB_PASSWORD'), 
+        'USER': env('DB_USERNAME'), 
+        'PASSWORD': env('DB_PASSWORD'), 
         'HOST': 'e-commerce.cdm01l5v0buq.us-east-2.rds.amazonaws.com',
         'PORT': '5432'
     }
@@ -152,7 +156,7 @@ LOGIN_REDIRECT_URL = '/'
 
 STRIPE_PUBLIC_KEY = 'pk_test_51JAyEpFoScc12fVdLxCGCfMpP1WQXKnWo06i353TInqa4D2PQvtyyA7fxrs7zoqWckCDTJCq1CY8ljtSiMAXvUMG00S3eTxpcN'
 
-STRIPE_SECRET_KEY = getenv('STRIPE_SKEY')
+STRIPE_SECRET_KEY = env('STRIPE_SKEY')
 
 # Email Backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
