@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'e_com.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'updated_ecom',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': '127.0.0.1',
+        'NAME': 'updated_ecom', 
+        'USER': getenv('DB_USERNAME'), 
+        'PASSWORD': getenv('DB_PASSWORD'), 
+        'HOST': 'e-commerce.cdm01l5v0buq.us-east-2.rds.amazonaws.com',
         'PORT': '5432'
     }
 }
@@ -152,7 +152,7 @@ LOGIN_REDIRECT_URL = '/'
 
 STRIPE_PUBLIC_KEY = 'pk_test_51JAyEpFoScc12fVdLxCGCfMpP1WQXKnWo06i353TInqa4D2PQvtyyA7fxrs7zoqWckCDTJCq1CY8ljtSiMAXvUMG00S3eTxpcN'
 
-STRIPE_SECRET_KEY = 'sk_test_51JAyEpFoScc12fVdw27XskdCYgJClErVA29vBUVvb7PxLVNiCjdbgk8gpo1bNA7M4Zqk5hlVHRhtRCh9XeQHKWh900kLGPnkur'
+STRIPE_SECRET_KEY = getenv('STRIPE_SKEY')
 
 # Email Backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
