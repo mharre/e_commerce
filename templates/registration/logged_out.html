@@ -2,7 +2,11 @@
 {% load static %}
 
 {% block css_files %}
-<link rel="stylesheet" href="{% static 'login-out.css '%}">
+<link rel="stylesheet" href="{% static 'login-out.css' %}">
+{% endblock %}
+
+{% block title %}
+Logged Out
 {% endblock %}
 
 {% block content %}

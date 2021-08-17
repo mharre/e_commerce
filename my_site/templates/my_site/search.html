@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="{% static 'my_site/all_products.css' %}">
 {% endblock %}
 
+{% block title %}
+MHe-commerce: {{ q }}
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid" id='search-wrapper'>
     <div class="container text-center pt-3">

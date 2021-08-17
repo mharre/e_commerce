@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+{{ product.name|title}}
+{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
     <img src="{{ product.image.url }}" class='img-fluid mx-auto d-block' alt="{{ product.name }}">
