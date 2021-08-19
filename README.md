@@ -1,7 +1,7 @@
 # e_commerce
 This is my first attempt at creating and delpoying a website completely on my own. There is more focus on the back end functionality than the front end,
 even though I tried to design it to the best of my abilities. Front end was created completely with bootstrap. This website is completely fake and used
-just as practice of development and deployment.
+just as practice for development and deployment.
 This website was deployed with AWS on their free tier through elastic beanstalk. I also serve the images separately without the help of Django for better performance.
 Use of AWS RDS for my database as well. Because this is the free tier it does take a little time to load everything. 
 Most things are designed to be rendered in templates dynamically, lots of templating language, forloops and conditional logic used to try to keep the code DRY.
@@ -27,7 +27,8 @@ Functions of the website include:
   18) With each transaction a reference code is generated as well, which can be seen in "My Orders" once a purchase has been made
   19) Ability to request refund
   20) Email backend to reset a password is in the files but not set up completely as of yet
-  21) More features to come as I will use this website for more practice in the future
+  21) More things that I cannot think of at the moment!
+  22) Additional features to come as I will use this website for more practice in the future
         - I want to add login with email instead of username
         - Review stars based on the average rating 
         - Change aesthetics 
