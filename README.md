@@ -1,16 +1,16 @@
 # e_commerce
 
-Tech Stack:</br >
-Bootstrap 4.6, HTML/CSS/JS for the frontend</br >
-Python3 and Django for server language and server framework</br >
-Django-Migrations for creating and running schema migrations</br >
-PostgresSQL as the database</br >
-Django built ORM as the ORM library</br >
+Tech Stack:
+Bootstrap 4.6, HTML/CSS/JS for the frontend
+Python3 and Django for server language and server framework
+Django-Migrations for creating and running schema migrations
+PostgresSQL as the database
+Django built ORM as the ORM library
 
-Deployment:</br >
-Deployed on AWS with elastic beanstalk free tier</br >
-AWS RDS setup for the database</br > 
-Serving static files separately not via Django for better performance</br >
+Deployment:
+Deployed on AWS with elastic beanstalk free tier
+AWS RDS setup for the database 
+Serving static files separately not via Django for better performance
 
 This is my first attempt at creating and delpoying a website completely on my own. There is more focus on the back end functionality than the front end,
 even though I tried to design it to the best of my abilities. Front end was created completely with bootstrap. This website is completely fake and used
